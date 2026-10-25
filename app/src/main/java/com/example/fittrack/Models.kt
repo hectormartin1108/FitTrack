@@ -10,4 +10,16 @@ data class Exercise(
     val previewInstructions: String,
     val recommendedDurationMinutes: Int
 )
+data class WorkoutLogEntry(
+    val id: String = UUID.randomUUID().toString(),
+    val exerciseName: String,
+    val category: String,
+    val durationMinutes: Int,
+    val timestamp: String
+)
 
+data class WorkoutUIState(
+    val totalWorkouts: Int = 0,
+    val totalDurationMinutes: Int = 0,
+    val historyLog: List<WorkoutLogEntry> = emptyList()
+)
