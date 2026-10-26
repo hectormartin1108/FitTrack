@@ -2,11 +2,14 @@ package com.example.fittrack.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.fittrack.Exercise
 
@@ -22,14 +25,14 @@ fun ExerciseDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding)
+                    .padding(innerPadding),
+                contentAlignment = Alignment.Center
             ) {
                 Text("Exercise not found.")
             }
         }
         return
     }
-
     var durationText by remember { mutableStateOf("") }
     var showSuccessDialog by remember { mutableStateOf(false) }
     var loggedDurationValue by remember { mutableIntStateOf(0) }
@@ -42,7 +45,7 @@ fun ExerciseDetailScreen(
             onDismissRequest = { showSuccessDialog = false },
             title = { Text("Workout Logged!") },
             text = {
-                Text("You logged $loggedDurationValue minutes for ${exercise.name}!")
+                Text("Successfully logged $loggedDurationValue minutes for ${exercise.name}!")
             },
             confirmButton = {
                 TextButton(onClick = { showSuccessDialog = false }) {
@@ -87,19 +90,111 @@ fun ExerciseDetailScreen(
                 )
             ) {
                 Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = exercise.category,
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    Text(
+                        text = exercise.name,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Text(
+                        text = "Recommended: ${exercise.recommendedDurationMinutes} minutes",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Text(
-                        text = "Category: ${exercise.category}",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.primary
+                        text = "Instructions",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "Recommended Duration: ${exercise.recommendedDurationMinutes} minutes",
+                        text = exercise.previewInstructions,
                         style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                }
+            }
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        text = "Log Workout",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    OutlinedTextField(
+                        value = durationText,
+                        onValueChange = { durationText = it },
+                        label = { Text("Duration (minutes)") },
+                        modifier = Modifier.fillMaxWidth(),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        isError = showError,
+                        supportingText = {
+                            if (showError) {
+                                Text(
+                                    text = "Please enter a valid number greater than 0.",
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            }
+                        },
+                        singleLine = true
+                    )
+
+                    Button(
+                        onClick = {
+                            if (isDurationValid) {
+                                onLogWorkout(parsedDuration)
+                                loggedDurationValue = parsedDuration
+                                showSuccessDialog = true
+                                durationText = ""
+                            }
+                        },
+                        enabled = isDurationValid,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Log Completed Workout")
+                    }
                 }
             }
         }
