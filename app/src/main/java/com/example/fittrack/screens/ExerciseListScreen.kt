@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.fittrack.Exercise
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,6 +90,7 @@ fun ExerciseCard(
                     modifier = Modifier.weight(1f)
                 )
             }
+            DifficultyBadge(difficulty = exercise.difficulty)
 
             Text(
                 text = exercise.previewInstructions,
@@ -103,5 +105,27 @@ fun ExerciseCard(
                 fontWeight = FontWeight.Medium
             )
         }
+    }
+}
+
+@Composable
+fun DifficultyBadge(difficulty: String) {
+    val (bgColor, textColor) = when (difficulty.trim().lowercase()) {
+        "beginner" -> Color(0xFFE8F5E9) to Color(0xFF2E7D32)
+        "intermediate" -> Color(0xFFFFF3E0) to Color(0xFFE65100)
+        "advanced" -> Color(0xFFFFEBEE) to Color(0xFFC62828)
+        else -> Color(0xFFE8F5E9) to Color(0xFF2E7D32)
+    }
+
+    Surface(
+        color = bgColor,
+    ) {
+        Text(
+            text = difficulty,
+            color = textColor,
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
+        )
     }
 }
