@@ -7,27 +7,27 @@ object ExerciseRepository {
         // Strength
         Exercise(
             id = "strength_1",
-            name = "Test",
+            name = "Forearm Plank",
             category = "Strength",
-            difficulty = "Easy",
-            previewInstructions = "TEstInstructions",
-            recommendedDurationMinutes = 1
+            difficulty = "Beginner",
+            previewInstructions = "Hold a rigid horizontal posture resting on your forearms while bracing your core and keeping your spine straight.",
+            recommendedDurationMinutes = 5
         ),
         Exercise(
-            id = "strength_1",
-            name = "",
-            category = "",
-            difficulty = "",
-            previewInstructions = "",
-            recommendedDurationMinutes = 1
+            id = "strength_2",
+            name = "Barbell Curls",
+            category = "Strength",
+            difficulty = "Intermediate",
+            previewInstructions = "Grip a barbell with an underhand grip and curl the weight toward your chest while keeping your elbows stationary at your sides.",
+            recommendedDurationMinutes = 10
         ),
         Exercise(
-            id = "strength_1",
-            name = "",
-            category = "",
-            difficulty = "",
-            previewInstructions = "",
-            recommendedDurationMinutes = 1
+            id = "strength_3",
+            name = "Archer Pull Ups",
+            category = "Strength",
+            difficulty = "Advanced",
+            previewInstructions = "Pull your chest up toward the bar while extending one arm completely straight out to the side to heavily overload the pulling arm.",
+            recommendedDurationMinutes = 8
         ),
 
         // Cardio
