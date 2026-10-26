@@ -11,7 +11,6 @@ object ExerciseRepository {
             category = "Strength",
             difficulty = "Easy",
             previewInstructions = "TEstInstructions",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -20,7 +19,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -29,7 +27,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
 
@@ -40,7 +37,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -49,7 +45,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -58,7 +53,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
 
@@ -69,7 +63,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -78,7 +71,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -87,7 +79,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
 
@@ -98,7 +89,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -107,7 +97,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         ),
         Exercise(
@@ -116,7 +105,6 @@ object ExerciseRepository {
             category = "",
             difficulty = "",
             previewInstructions = "",
-            stepByStepInstructions = listOf(),
             recommendedDurationMinutes = 1
         )
     )

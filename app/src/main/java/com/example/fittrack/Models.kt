@@ -9,7 +9,6 @@ data class Exercise(
     val difficulty: String,
     val previewInstructions: String,
     val recommendedDurationMinutes: Int,
-    val stepByStepInstructions: List<String>,
 )
 data class WorkoutLogEntry(
     val id: String = UUID.randomUUID().toString(),
